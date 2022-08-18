@@ -78,8 +78,8 @@
             const html5QrCode = new Html5Qrcode("reader");
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 $('input[name=barcode]').val(decodedText);
-                // setInterval(CheckIn, 5000);
-                CheckIn();
+                setInterval(CheckIn, 5000);
+                // CheckIn();
             };
             const config = { fps: 10, qrbox: { width: 250, height: 250 } };
             html5QrCode.start({ facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
