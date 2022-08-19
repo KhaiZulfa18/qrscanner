@@ -34,11 +34,12 @@
                             <b>Izinkan aplikasi untuk mengakses kamera</b>
                         </div>
                     </div>
-                    <form action="">
+                    <!-- <form method="POST" action="javascript(0)"> -->
                         <div class="form-group">
                             <input type="text" class="form-control" name="barcode">
                         </div>
-                    </form>
+                        <button class="btn btn-primary" onclick="CheckIn()">Masuk</button>
+                    <!-- </form> -->
                 </div>
             </div>
             </div>
@@ -69,8 +70,7 @@
         function CheckIn(){
             var val = $('input[name=barcode]').val();
             
-            if($('#reader').html()!='')
-                html5QrCode.stop();
+            $('#scan').addClass('d-none');
 
             swal({
                 title: 'Berhasil!',
@@ -79,9 +79,9 @@
                 buttons: true,
                 confirmButtonText: 'Cool'
             })
-            .then((value) => {
-                html5QrCode.start(); 
-            });
+            .then((value) =>{
+                $('#scan').removeClass('d-none');
+            })
         }
         function isMobile() {
             if (sessionStorage.desktop) // desktop storage
