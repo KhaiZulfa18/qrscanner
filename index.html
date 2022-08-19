@@ -55,8 +55,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
     <script language="JavaScript">
+        $(function () {
+            $("#barcode").focus();
+
+            $('#barcode').on('keypress', function (e) {
+                if(e.key =='Enter'){
+                    CheckIn();
+                    e.preventDefault();
+                }
+            });
+        });
+
         function CheckIn(){
             var val = $('input[name=barcode]').val();
+            
+            if($('#reader').html()!='')
+                html5QrCode.stop();
 
             swal({
                 title: 'Berhasil!',
@@ -64,6 +78,9 @@
                 icon: 'success',
                 buttons: true,
                 confirmButtonText: 'Cool'
+            })
+            .then((value) => {
+                html5QrCode.start(); 
             });
         }
         function isMobile() {
