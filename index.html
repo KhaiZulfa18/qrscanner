@@ -78,10 +78,8 @@
                 icon: 'success',
                 buttons: true,
                 confirmButtonText: 'Cool'
-            })
-            .then((value) =>{
-                $('#scan').removeClass('d-none');
-            })
+            });
+            $('#scan').removeClass('d-none');
         }
         function isMobile() {
             if (sessionStorage.desktop) // desktop storage
